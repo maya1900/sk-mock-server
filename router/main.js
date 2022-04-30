@@ -4,7 +4,7 @@ const router = require('koa-router')()
 const Random = Mock.Random
 
 Random.extend({
-  custom: function() {
+  custom: function () {
     const lang = ['你好', 'hello', '空内七哇', '安宁哈撒呦']
     return this.pick(lang)
   }
@@ -29,6 +29,13 @@ router.get('/list', async ctx => {
   ctx.body = {
     code: 0,
     data
+  }
+})
+
+router.post('/create', async ctx => {
+  ctx.response.body = {
+    code: 0,
+    data: `你给的参数是${JSON.stringify(ctx.request.body)}`
   }
 })
 
